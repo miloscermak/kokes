@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Živé natáčení: Jedno procento s Antonínem Kokešem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .event-title {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .event-subtitle {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 4rem;
+            font-weight: 400;
+        }
+
+        .guest-name {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .detail-item h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .detail-item p {
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #dc2626;
+            color: #fff;
+            padding: 1.2rem 3rem;
+            border: none;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            background: #b91c1c;
+        }
+
+        .hero-note {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about {
+            background: #000;
+            color: #fff;
+            padding: 6rem 0;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text-content {
+            text-align: left;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            filter: contrast(1.1) brightness(1.05);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: #000;
+            color: #fff;
+            padding: 6rem 0;
+        }
+
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #dc2626;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Principles Section */
+        .principles {
+            padding: 6rem 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .principles-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .principles-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #000;
+            letter-spacing: -0.01em;
+        }
+
+        .principles-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            background: #000;
+            margin-top: 4rem;
+        }
+
+        .principle-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .principle-card:hover {
+            background: #fafafa;
+        }
+
+        .principle-card:active {
+            background: #f5f5f5;
+        }
+
+        .principle-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #dc2626;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .principle-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+            line-height: 1.3;
+            padding-right: 3rem;
+        }
+
+        .principle-description {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid #000;
+        }
+
+        .footer-content {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .footer-content p:first-child {
+            margin-bottom: 1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: #fff;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #000;
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 10;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #000;
+            margin: 0;
+            padding-right: 3rem;
+        }
+
+        .modal-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #dc2626;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: 300;
+            color: #000;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #dc2626;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #000;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f8f8;
+            border-left: 3px solid #dc2626;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .modal-action {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-left: 3px solid #000;
+            margin-bottom: 2rem;
+        }
+
+        .modal-action h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .modal-action p {
+            font-size: 1rem;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 2.5rem;
+            }
+            
+            .event-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .event-details {
+                gap: 2rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .about, .principles, .quote-section {
+                padding: 4rem 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            
+            .about-text-content {
+                text-align: center;
+            }
+            
+            .section-title, .principles-title {
+                font-size: 2rem;
+            }
+            
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote {
+                font-size: 1.5rem;
+            }
+            
+            .principle-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .principle-number {
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .modal.active {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                max-height: 90vh;
+            }
+            
+            .modal-header, .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .cta-button:focus {
+            outline: 2px solid #dc2626;
+            outline-offset: 2px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Jedno procento</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="event-title">Jedno procento ŽIVĚ</h1>
+                    <p class="event-subtitle">s <span class="guest-name">Antonínem Kokešem</span></p>
+                    
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <h3>Datum</h3>
+                            <p>22. října</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Čas</h3>
+                            <p>19:00</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Místo</h3>
+                            <p>Knihovna Čermáka a Staňka</p>
+                        </div>
+                    </div>
+
+                    <a href="#" class="cta-button">Koupit vstupenky</a>
+                    
+                    <p class="hero-note">Jedinečná příležitost být u živého natáčení s jedním z nejúspěšnějších českých podnikatelů</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text-content">
+                        <h2 class="section-title">Antonín Kokeš</h2>
+                        <p class="about-text">
+                            Jeden z <span class="highlight">nejvýraznějších českých podnikatelů</span> polistopadové éry. Jeho příběh začal prodejem pohlednic na Staroměstském náměstí a vyústil v diverzifikované impérium s obratem přes <span class="highlight">1,8 miliardy korun</span>.
+                        </p>
+                        <p class="about-text">
+                            Zakladatel Albi, sítě Antonínových pekařství a módní značky Kinoko. Jeho přístup k podnikání připomíná houbaře: trpělivě prohledává terén, všímá si příležitostí, které ostatní míjejí, a spoléhá na hlubokou, osobní znalost prostředí.
+                        </p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/antonin-kokes.jpg" alt="Antonín Kokeš - portrét" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container">
+                <div class="quote-content">
+                    <blockquote class="quote">
+                        "Energie je víc než nápad. Nápady má každý, ale odhodlat se k tomu, něco udělat, vydržet nejen první kroky... To je ta energie, na které záleží."
+                    </blockquote>
+                    <p class="quote-author">Antonín Kokeš</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Principles Section -->
+        <section class="principles">
+            <div class="container">
+                <div class="principles-intro">
+                    <h2 class="principles-title">Desatero úspěchu</h2>
+                    <p class="principles-subtitle">Praktické principy, které Antonína Kokeše dovedly k úspěchu ve třech zcela odlišných oborech</p>
+                </div>
+
+                <div class="principles-grid">
+                    <div class="principle-card" data-modal="modal1">
+                        <div class="principle-number">01</div>
+                        <h3 class="principle-title">Energie je víc než nápad</h3>
+                        <p class="principle-description">Trh je přesycen dobrými nápady, ale chybí mu lidé s energií a odhodláním je dotáhnout do konce.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal2">
+                        <div class="principle-number">02</div>
+                        <h3 class="principle-title">Zůstaňte věčným začátečníkem</h3>
+                        <p class="principle-description">Záměrně přistupujte k novým výzvám s myslí nováčka, nezatíženou předsudky a zavedenými postupy.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal3">
+                        <div class="principle-number">03</div>
+                        <h3 class="principle-title">Revoluci musí udělat majitel</h3>
+                        <p class="principle-description">Strategické, disruptivní změny může iniciovat pouze majitel, který nese konečné riziko.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal4">
+                        <div class="principle-number">04</div>
+                        <h3 class="principle-title">Osahejte si byznys na vlastní kůži</h3>
+                        <p class="principle-description">Skutečné porozumění byznysu je fyzickou záležitostí, která musí vzejít z přímé, praktické zkušenosti.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal5">
+                        <div class="principle-number">05</div>
+                        <h3 class="principle-title">Delegujte, ale řiďte pomocí čísel</h3>
+                        <p class="principle-description">Kombinujte radikální delegování s přísným, ale transparentním systémem řízení pomocí klíčových ukazatelů.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal6">
+                        <div class="principle-number">06</div>
+                        <h3 class="principle-title">Lidé jsou klíč, ne produkt</h3>
+                        <p class="principle-description">Správný tým je nejvyšší konkurenční výhodou, bez ohledu na odvětví.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal7">
+                        <div class="principle-number">07</div>
+                        <h3 class="principle-title">Stížnost je dar od zákazníka</h3>
+                        <p class="principle-description">Negativní zpětná vazba je cenný dar od zákazníků, kterým na firmě nejvíce záleží.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal8">
+                        <div class="principle-number">08</div>
+                        <h3 class="principle-title">Hledejte inspiraci za hranicemi oboru</h3>
+                        <p class="principle-description">Největší inovace vznikají přenesením myšlenek ze zcela odlišných světů.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal9">
+                        <div class="principle-number">09</div>
+                        <h3 class="principle-title">Stabilita je největší úspěch</h3>
+                        <p class="principle-description">Největším úspěchem je dlouhověkost a stabilita, která paradoxně umožňuje větší odvahu v inovacích.</p>
+                    </div>
+
+                    <div class="principle-card" data-modal="modal10">
+                        <div class="principle-number">10</div>
+                        <h3 class="principle-title">Nebojte se metody „pokus-omyl"</h3>
+                        <p class="principle-description">Chyby nejsou selhání, ale nezbytná data v procesu učení a experimentování.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Knihovna Čermáka a Staňka • Praha</p>
+                <p>Těšíme se na setkání s vámi</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Windows -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">01</span>
+                <h2 class="modal-title">Energie je víc než nápad</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Podnikání není jen o nápadu, ale hlavně o energii. Nápady má každý – když mi dáte chvilku, hned vám jich deset vymyslím. Ale odhodlat se k tomu, něco udělat, vydržet nejen první kroky, nevzdávat se a tlačit svůj projekt dopředu... To je ta energie, o které mluvím, a na které záleží."
+                </div>
+                <div class="modal-description">
+                    <p>V současném světě přeceňujeme hodnotu geniálního nápadu a podceňujeme význam vytrvalé exekuce. Antonín Kokeš konzistentně obrací tuto logiku naruby. „Energie" v jeho pojetí není jen tvrdá práce; je to kombinace psychické odolnosti, schopnosti udržet dlouhodobé soustředění a vnitřního motoru, který žene projekt vpřed i ve chvílích, kdy počáteční nadšení dávno vyprchalo.</p>
+                    <p>Tento princip je základním kamenem jeho filozofie. Každý podnikatelský záměr nevyhnutelně narazí na překážky, ať už jde o byrokracii, problémy s dodavateli, nebo nezájem trhu. Právě v těchto momentech se ukáže, zda za projektem stojí pouhý nápad, nebo skutečná, neúnavná energie.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Před spuštěním nového projektu si upřímně zhodnoťte své osobní energetické rezervy na následujících 24 měsíců, nikoli jen kvalitu myšlenky. Dokážete udržet tlak, i když narazíte na nevyhnutelné překážky a neúspěchy?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">02</span>
+                <h2 class="modal-title">Zůstaňte věčným začátečníkem</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Když přijdu do nového oboru, záměrně se snažím ignorovat zažité postupy a pravidla. Ptám se spíš: ‚Proč se to dělá takhle?' než ‚Jak se to má dělat?' Často zjistím, že řada věcí se dělá určitým způsobem jen proto, že se tak vždy dělaly."
+                </div>
+                <div class="modal-description">
+                    <p>Paradoxně, Kokešova největší výhoda v nových oborech často spočívá v jeho nezkušenosti. Když vstupoval do pekařství nebo módy, nepřinášel si s sebou předpoklady o tom, jak věci „musí" fungovat. Místo toho přistupoval k problémům s čistým štítem a otevřenou myslí.</p>
+                    <p>Tento přístup mu umožňuje vidět příležitosti, které jsou pro zavedené hráče neviditelné, protože jsou příliš zabráni do konvencí svého oboru. „Věčný začátečník" není někdo, kdo nic neumí – je to někdo, kdo si dokáže zachovat zvědavost a ochotu zpochybnit status quo.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Při příštím firemním rozhodování se záměrně zeptejte: „Kdyby to tady nikdo nikdy nedělal, jak bychom k tomu přistoupili?" Ignorujte na chvíli všechny zavedené postupy a uvažujte od nuly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">03</span>
+                <h2 class="modal-title">Revoluci musí udělat majitel</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Revoluční změny nemůže udělat manager. Ten má jiné motivace, jiné časové horizonty, jiné riziko. Skutečně zásadní změny, které mohou ohrozit krátkodobé výsledky, ale jsou dlouhodobě nezbytné, může udělat jen majitel."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš rozlišuje mezi evolučními vylepšeními, které mohou řídit manageři, a revolučními změnami, které vyžadují odvahu majitele. Manager optimalizuje existující systém; majitel může systém úplně změnit nebo zahodit.</p>
+                    <p>Když Kokeš revolucionizoval distribuci Albi produktů nebo když se rozhodl vstoupit do zcela nového oboru, riskal krátkodobé ztráty a možné selhání. Takové rozhodnutí nemůže udělat někdo, kdo nese odpovědnost jen za quarterly výsledky, ale nemá podíl na dlouhodobé hodnotě firmy.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Identifikujte jednu oblast vašeho byznysu, která potřebuje revoluční, ne jen evoluční změnu. Jako majitel nebo top vedení si vyhraďte čas na strategické uvažování o této změně bez tlaku na okamžité výsledky.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">04</span>
+                <h2 class="modal-title">Osahejte si byznys na vlastní kůži</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Nemůžete pochopit byznys ze sestav a prezentací. Musíte si ho osahat na vlastní kůži. Já jsem prodával na tržnici, stál jsem v pekárně, zkoušel jsem si, co to znamená obsloužit zákazníka. Bez toho byste nikdy nepochopili, kde jsou skutečné problémy a příležitosti."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš věří, že abstraktní znalost byznysu je iluzorní. Skutečné porozumění vzniká jen přímým kontaktem s každodenní realitou podnikání. Když začínal s pohledy na Staroměstském náměstí, naučil se rozumět zákazníkům, sezonnosti, konkurenci.</p>
+                    <p>I dnes, když jeho impérium čítá stovky zaměstnanců, Kokeš si pravidelně „zašpiní ruce". Navštěvuje pekárny, zkouší nové produkty, sleduje reakce zákazníků. Tato přímá zkušenost mu poskytuje insights, které žádná analytická zpráva nedokáže nahradit.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Naplánujte si tento měsíc alespoň jednu směnu „v první linii" vašeho byznysu – ať už jde o obsluhu zákazníků, práci ve výrobě, nebo jiný operativní úkol. Sledujte, co se dozvíte nového.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">05</span>
+                <h2 class="modal-title">Delegujte, ale řiďte pomocí čísel</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Delegování bez měření je chaos. Delegování s měřením je svoboda. Musíte najít ta správná čísla, která opravdu vypovídají o výkonu, a pak lidem dát volnost v tom, jak těch čísel dosáhnou."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš vyvinul sofistikovaný systém KPI, který mu umožňuje delegovat prakticky vše, přitom ale mít kontrolu nad směřováním firmy. Nejde o mikromanagement, ale o inteligentní design metrik, které zachycují skutečně důležité aspekty výkonu.</p>
+                    <p>Klíčem je najít čísla, která jsou skutečně prediktivní a která zaměstnanci mohou ovlivnit svými rozhodnutími. Pak jim dát svobodu v metodách, ale jasné cíle ve výsledcích. Takový systém motivuje kreativitu a zároveň zajišťuje odpovědnost.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Pro jednu oblast, kterou chcete více delegovat, definujte 2-3 klíčové metriky, které skutečně vypovídají o úspěchu. Nastavte systém měření a dejte odpovědné osobě svobodu v přístupu, ale jasnost v cílech.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div id="modal6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">06</span>
+                <h2 class="modal-title">Lidé jsou klíč, ne produkt</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Můžete mít nejlepší produkt na světě, ale bez správných lidí neuspějete. Naopak se správnými lidmi můžete uspět i s průměrným produktem, protože ti lidé ho zlepší. Produkt se dá změnit za měsíc, tým se buduje roky."
+                </div>
+                <div class="modal-description">
+                    <p>V Kokešově filozofii jsou lidé skutečným aktivem firmy, nikoli nákladem. Investuje enormní energii do výběru, rozvoje a udržení klíčových talentů. Víc než na dokonalém produktu se soustředí na dokonalém týmu, který pak vynikající produkty vytvoří sám.</p>
+                    <p>Tento princip se projevuje i v jeho přístupu k expanzi do nových oborů. Nezačíná studiem trhu nebo produktů, ale hledáním správných lidí, kteří ten trh a produkty znají. Teprve když najde správný tým, vstoupí do nového segmentu.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Analyzujte poměr času a zdrojů, který investujete do rozvoje produktů vs. rozvoje lidí. Pokud je poměr víc než 70:30 ve prospěch produktů, přehodnoťte své priority.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 7 -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">07</span>
+                <h2 class="modal-title">Stížnost je dar od zákazníka</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Stížnost není problém, je to dar. Zákazník, který si stěžuje, je zákazník, kterému na vaší firmě záleží natolik, že je ochoten investovat svůj čas do toho, aby vám pomohl se zlepšit. Většina nespokojených zákazníků prostě odejde a nic neřekne."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš překroutil obvyklé vnímání stížností. Místo obranné reakce vidí každou stížnost jako cennou zpětnou vazbu od někoho, kdo má o firmu skutečný zájem. Statistiky ukazují, že za každou stížnost stojí desítky tichých nespokojených zákazníků, kteří prostě přejdou ke konkurenci.</p>
+                    <p>V jeho firmách existují propracované systémy na zachytávání a analýzu stížností. Nejde jen o řešení konkrétního problému, ale o identifikaci systémových slabostí. Často jeho největší produktové inovace vznikly přímo z analýzy zákazníckých stížností.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Sestavte měsíční analýzu všech stížností a reklamací. Hledejte vzorce a systémové problémy. Oslavte zaměstnance, kteří přinesou návrh na zlepšení vycházející ze stížnosti zákazníka.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 8 -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">08</span>
+                <h2 class="modal-title">Hledejte inspiraci za hranicemi oboru</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Největší inovace nevznikají uvnitř oboru, ale přenesením myšlenek z úplně jiných světů. Když jsem budoval Albi, díval jsem se na fast food řetězce. Když jsem řešil distribuci v pekařství, studoval jsem logistiku automobilového průmyslu."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš systematicky vyhledává inspiraci v odvětvích, která na první pohled nemají s jeho byznysy nic společného. Tímto způsobem dokáže přinést průlomové inovace, které konkurence nepředvídá, protože se dívá jen v rámci svého oboru.</p>
+                    <p>Například logistické procesy z automotive průmyslu aplikoval do distribuce pekárenských výrobků, čímž dosáhl efektivity, kterou tradiční pekárny nedokázaly kopírovat. Marketing principles z módy použil v potravinářství. Crossover thinking je jeho klíčová konkurenční výhoda.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Identifikujte tři zcela odlišné obory od vašeho. Přečtěte si odborné publikace z těchto oblastí a hledejte principy, které by mohly být aplikovatelné ve vašem byznysu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 9 -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">09</span>
+                <h2 class="modal-title">Stabilita je největší úspěch</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Neexistuje nic nudnějšího než stabilní, dlouhodobě ziskový byznys – a zároveň nic těžšího k dosažení. Mediální pozornost získávají spektakulární growth stories, ale skutečná hodnota se vytváří v dekádách konzistentního výkonu."
+                </div>
+                <div class="modal-description">
+                    <p>V době startup kultury a hypergrowth stories Kokeš obhajuje hodnotu dlouhodobé stability. Jeho firmy rostou pomalu, ale ustále. Netouží po virálním úspěchu, ale po desetiletích konzistentního zlepšování a upevňování pozice na trhu.</p>
+                    <p>Paradoxně tato stabilita mu umožňuje větší inovativní odvahu. Když máte pevné základy, můžete si dovolit experimentovat a risknout. Nestabilní firma musí být konzervativní, stabilní firma může být radikální v inovacích, protože má rezervy na neúspěch.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Namísto plánování na příští kvartál si naplánujte, jak má vaše firma vypadat za 10 let. Definujte stabilní základy, na kterých můžete stavět dlouhodobé inovace.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 10 -->
+    <div id="modal10" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-number">10</span>
+                <h2 class="modal-title">Nebojte se metody „pokus-omyl"</h2>
+                <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-quote">
+                    "Plánování má své limity. V určitém okamžiku prostě musíte začít experimentovat. Chyby nejsou selhání, jsou to data. Každý neúspěšný pokus vám řekne něco důležitého o tom, co fungovat nebude."
+                </div>
+                <div class="modal-description">
+                    <p>Kokeš kombinuje pečlivé plánování s ochotou experimentovat a rychle se učit z chyb. Nevěří na dokonalé business plány, ale na rychlé prototypování a iterativní zlepšování na základě reálné zpětné vazby trhu.</p>
+                    <p>Tato filozofie se projevuje ve všech jeho projektech. Spíš než rok plánovat perfektní produkt, radši za tři měsíce uvede na trh beta verzi a na základě reakcí zákazníků produkt rychle vylepšuje. Klíčem je nastavit experimenty tak, aby možné ztráty byly kontrolovatelné.</p>
+                </div>
+                <div class="modal-action">
+                    <h4>Aplikovatelný krok</h4>
+                    <p>Identifikujte jeden projekt, který dlouho plánujete, ale stále neimplementujete. Navrhněte malý, nízkonákladový experiment, kterým můžete otestovat klíčové předpoklady během příštích 30 dnů.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.principle-card');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close');
+
+            // Open modal when card is clicked
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close modal when close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Close modal when clicking outside the content
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeModal = document.querySelector('.modal.active');
+                    if (activeModal) {
+                        activeModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
