@@ -48,6 +48,12 @@
             color: #000;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            color: #dc2626;
         }
 
         /* Hero Section */
@@ -345,6 +351,10 @@
         .portrait-content {
             max-width: 900px;
             margin: 0 auto;
+        }
+
+        .portrait .section-title {
+            color: #dc2626;
         }
 
         .portrait-lead {
@@ -687,14 +697,14 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">Jedno procento</div>
+                <a href="#home" class="logo">Jedno procento</a>
             </div>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="container">
                 <div class="hero-content">
                     <h1 class="event-title">Jedno procento ŽIVĚ</h1>
