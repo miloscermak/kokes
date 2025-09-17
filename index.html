@@ -55,10 +55,33 @@
             padding: 6rem 0;
             border-bottom: 1px solid #000;
             position: relative;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('./images/kokes-procento2019.png');
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./images/kokes-procento2019.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero * {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
@@ -71,14 +94,14 @@
             font-size: 4rem;
             font-weight: 300;
             margin-bottom: 1rem;
-            color: #000;
+            color: #fff;
             letter-spacing: -0.02em;
             line-height: 1.1;
         }
 
         .event-subtitle {
             font-size: 1.5rem;
-            color: #000;
+            color: #fff;
             margin-bottom: 4rem;
             font-weight: 400;
         }
@@ -104,16 +127,27 @@
         .detail-item h3 {
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #000;
+            color: #fff;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
         .detail-item p {
-            color: #000;
+            color: #fff;
             font-size: 1.2rem;
             font-weight: 500;
+        }
+        
+        .detail-item a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: border-color 0.2s ease;
+        }
+        
+        .detail-item a:hover {
+            border-bottom-color: #dc2626;
         }
 
         .cta-button {
@@ -136,7 +170,7 @@
         }
 
         .hero-note {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             font-weight: 300;
         }
@@ -544,7 +578,7 @@
                         </div>
                         <div class="detail-item">
                             <h3>Místo</h3>
-                            <p><a href="http://knihovna.club" target="_blank" style="color: inherit; text-decoration: none;">Knihovna Čermáka a Staňka</a></p>
+                            <p><a href="http://knihovna.club" target="_blank">Knihovna Čermáka a Staňka</a></p>
                         </div>
                     </div>
 
