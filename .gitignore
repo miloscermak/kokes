@@ -2,8 +2,7 @@ node_modules/
 .env
 *.log
 .DS_Store
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.webp
+
+# Povolit specifické obrázky
+!images/kokes-kresba.png
+!images/kokes-procento2019.png
